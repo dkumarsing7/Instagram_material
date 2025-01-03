@@ -15,19 +15,19 @@ int main() {
 
     // How to access an array element
     int marks3[5] = {10, 20, 30, 40, 50};
-    printf("First element of marks3: %d\n", marks3[0]); // prints the first element of the array
+    printf("\nFirst element of marks3: %d\n", marks3[0]); // prints the first element of the array
 
     // How to modify an array element
     int marks4[5] = {10, 20, 30, 40, 50};
     marks4[0] = 100; // modifies the first element of the array
-    printf("Modified first element of marks4: %d\n", marks4[0]);
+    printf("\nModified first element of marks4: %d\n", marks4[0]);
 
     // How to iterate over an array
     int marks5[5] = {10, 20, 30, 40, 50};
-    printf("Elements of marks5: ");
+    printf("\nElements of marks5: ");
     for (int i = 0; i < 5; i++) {
         printf("%d ", marks5[i]);
     }
-    printf("\n");
+    printf("\n\n");
     return 0;
 }
