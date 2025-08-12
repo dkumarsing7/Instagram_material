@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tooltip with Theme Switcher</title>
+    <style>
+         :root {
+            --bg-color: #1a1a1a;
+            --text-color: #fff;
+            --button-bg: #00bcd4;
+            --tooltip-bg: #333;
+        }
+        
+        body.light-theme {
+            --bg-color: #f9f9f9;
+            --text-color: #111;
+            --button-bg: #007acc;
+            --tooltip-bg: #ddd;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .tooltip-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        
+        .tooltip-button {
+            padding: 10px 20px;
+            background-color: var(--button-bg);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .tooltip-text {
+            visibility: hidden;
+            width: 160px;
+            background-color: var(--tooltip-bg);
+            color: var(--text-color);
+            text-align: center;
+            padding: 8px;
+            border-radius: 6px;
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .tooltip-text::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: var(--tooltip-bg) transparent transparent transparent;
+        }
+        
+        .tooltip-wrapper:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: 2px solid var(--text-color);
+            color: var(--text-color);
+            padding: 6px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .theme-toggle:hover {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+        }
+    </style>
+</head>
+
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+
+    <div class="tooltip-wrapper">
+        <button class="tooltip-button">Hover Me</button>
+        <div class="tooltip-text">Custom Tooltip with Theme 🎨</div>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle("light-theme");
+        }
+    </script>
+</body>
+
+</html>
